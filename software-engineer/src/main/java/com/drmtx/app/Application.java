@@ -13,32 +13,15 @@ import org.springframework.context.annotation.Configuration;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-@EnableAutoConfiguration
+
+
 @SpringBootApplication
-@EntityScan(basePackageClasses=Application.class)
-@Configuration
 public class Application {
-
-  private static final Logger _logger = LogManager.getLogger(Application.class);
-
-  @Bean
-  protected ServletContextListener listener() {
-    return new ServletContextListener() {
-
-      @Override
-      public void contextInitialized(ServletContextEvent sce) {
-        _logger.info("ServletContext initialized");
-      }
-
-      @Override
-      public void contextDestroyed(ServletContextEvent sce) {
-        _logger.info("ServletContext destroyed");
-      }
-
-    };
-  }
-
-  public static void main(String[] args) throws Exception {
-    ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class, args);
-  }
+    public static void main(String[] args) {
+        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+        //groovy.lang.Binding binding = new groovy.lang.Binding();
+		//binding.setProperty("app", context);
+        //new org.codehaus.groovy.tools.shell.Groovysh(binding, new org.codehaus.groovy.tools.shell.IO()).run((String) null);
+    }
 }
+
